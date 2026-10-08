@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#363b36">
+  <meta name="description" content="Личная страница Sucking_caramel: ссылки и музыка.">
+  <title>Sucking_caramel</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9byHOWjN67FGIsIIyzTAkqYdt6WBJkWE15RM9txZDdg&amp;s=10">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="cursor.js" defer></script>
+  <script src="discord-avatar.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="discord-presence.js" defer></script>
+</head>
+<body>
+  <div class="background" aria-hidden="true"><img id="background-image" alt=""><video id="background-video" autoplay muted loop playsinline hidden></video></div>
+  <div class="scene">
+    <main class="profile" id="profile" aria-label="Страница Sucking_caramel">
+      <section class="glass intro">
+
+        <h1 id="author">Sucking_caramel</h1>
+        <p id="description">❀☁️𝓶𝔂 𝓰𝓸𝓭, 𝓶𝔂 𝓾𝓷𝓲𝓿𝓮𝓻𝓼𝓮~☁️❀</p>
+        <p id="description">маленький вайбкод био</p>
+        <nav class="socials" id="socials" aria-label="Социальные сети"></nav>
+      </section>
+      <section class="glass player" aria-label="Музыкальный плеер">
+        <div class="player-heading">
+          <button class="icon-button volume-button" id="mute" aria-label="Выключить звук" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5V4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <h2 id="track-title">Название песни</h2>
+          <span class="heading-spacer" aria-hidden="true"></span>
+        </div>
+        <div class="playback">
+          <span id="elapsed" class="time">00:00</span>
+          <input id="seek" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Позиция воспроизведения" disabled>
+          <span id="duration" class="time">00:00</span>
+          <div class="transport">
+            <button class="icon-button" id="previous" aria-label="Предыдущий трек"><svg viewBox="0 0 24 24"><path d="M5 4h3v16H5zm14 0L9 12l10 8Z"/></svg></button>
+            <button class="play-button" id="play" aria-label="Воспроизвести"><svg id="play-symbol" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></svg></button>
+            <button class="icon-button" id="next" aria-label="Следующий трек"><svg viewBox="0 0 24 24"><path d="M16 4h3v16h-3zM5 4l10 8-10 8Z"/></svg></button>
+          </div>
+        </div>
+        <p id="audio-status" class="audio-status" role="status" hidden></p>
+        <audio id="audio" preload="metadata"></audio>
+      </section>
+
+      <section class="glass contact" aria-label="Discord">
+        <div class="avatar-wrapper" tabindex="0" aria-label="Аватар и активность">
+          <img
+            class="avatar"
+            id="avatar"
+            src="assets/icons/avatar.png"
+            alt="Аватар Sucking_caramel">
+
+          <span
+            id="discord-status-dot"
+            class="status-dot"
+            role="img"
+            aria-label="Не в сети"></span>
+
+          <span
+            id="discord-game-tooltip"
+            class="game-tooltip"
+            role="tooltip"
+            hidden></span>
+        </div>
+        <span class="contact-name" id="contact-name">Sucking_caramel</span>
+        <a id="discord" class="discord-button" href="https://discord.com/users/910573157923057684" target="_blank" rel="noopener noreferrer">Add to Discord <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
