@@ -33,7 +33,16 @@ const videoBackground = config.background.type === 'video';
 const background = $(videoBackground ? 'background-video' : 'background-image');
 $('background-image').hidden = videoBackground;
 background.hidden = false;
-background.src = safeUrl(config.background.url);
+const mobileBackgroundQuery = matchMedia('(hover: none) and (pointer: coarse)');
+const updateBackgroundSource = () => {
+  const url = mobileBackgroundQuery.matches && config.background.mobileUrl
+    ? config.background.mobileUrl
+    : config.background.url;
+  const source = safeUrl(url);
+  if (background.src !== source) background.src = source;
+};
+updateBackgroundSource();
+mobileBackgroundQuery.addEventListener('change', updateBackgroundSource);
 if (videoBackground) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const updateMotion = () => { if (motion.matches) background.pause(); else background.play().catch(() => {}); };
