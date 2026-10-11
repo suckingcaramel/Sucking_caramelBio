@@ -1,0 +1,2 @@
+1|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/The_perfect_pair_Beabadoobee.mp3|The perfect pair - beabadoobee
+2|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bored-Grunge-altered.mp3|Bored - Billie Eilish

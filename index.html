@@ -22,14 +22,20 @@
 
         <h1 id="author">Sucking_caramel</h1>
         <p id="description">❀☁️𝓶𝔂 𝓰𝓸𝓭, 𝓶𝔂 𝓾𝓷𝓲𝓿𝓮𝓻𝓼𝓮~☁️❀</p>
-        <p id="description">маленький вайбкод био</p>
         <nav class="socials" id="socials" aria-label="Социальные сети"></nav>
       </section>
       <section class="glass player" aria-label="Музыкальный плеер">
         <div class="player-heading">
-          <button class="icon-button volume-button" id="mute" aria-label="Выключить звук" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5V4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <div class="volume-controls">
+            <button class="icon-button volume-button" id="mute" aria-label="Выключить звук" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 4 5 9H2v6h3l6 5V4Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <input id="volume" class="seek volume-slider" type="range" min="0" max="1" value="0.5" step="0.01" aria-label="Громкость">
+          </div>
           <h2 id="track-title">Название песни</h2>
-          <span class="heading-spacer" aria-hidden="true"></span>
+          <div class="heading-actions">
+            <button class="icon-button shuffle-button" id="shuffle" aria-label="Включить перемешивание" aria-pressed="false">
+              <span class="shuffle-icon" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
         <div class="playback">
           <span id="elapsed" class="time">00:00</span>

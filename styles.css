@@ -205,11 +205,25 @@ h1 {
   text-align: center;
   margin: 0;
   flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
-.heading-spacer {
-  width: 24px;
+.heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 108px;
+  flex-shrink: 0;
+}
+
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 108px;
+  flex-shrink: 0;
 }
 
 .icon-button {
@@ -242,6 +256,22 @@ svg {
 
 .volume-button[aria-pressed=true] .sound-waves {
   display: none;
+}
+
+.shuffle-button {
+  color: #fff;
+}
+
+.shuffle-button[aria-pressed=true] {
+  color: #1ed760;
+}
+
+.shuffle-icon {
+  width: 22px;
+  height: 22px;
+  background-color: currentColor;
+  -webkit-mask: url('https://api.iconify.design/lucide/shuffle.svg') center / contain no-repeat;
+  mask: url('https://api.iconify.design/lucide/shuffle.svg') center / contain no-repeat;
 }
 
 .playback {
@@ -290,6 +320,22 @@ svg {
 
 .seek:disabled {
   opacity: .5;
+}
+
+.volume-slider {
+  flex: none;
+  width: 72px;
+  min-width: 0;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
 }
 
 .transport {
@@ -377,6 +423,14 @@ svg {
 }
 
 @media (max-width:520px) {
+  .volume-slider {
+    display: none;
+  }
+
+  .volume-controls, .heading-actions {
+    width: 24px;
+  }
+
   .scene {
     padding: 32px 18px;
   }

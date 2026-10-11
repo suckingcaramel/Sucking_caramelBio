@@ -49,9 +49,9 @@ window.PROFILE_CONFIG = {
       icon: 'https://cdn.simpleicons.org/steam/fff5dc',
     },
   ],
-  tracks: [
-    { title: 'The perfect pair', url: './assets/music/The_perfect_pair_Beabadoobee.mp3' },
-  ],
+  tracksFile: './tracks.txt',
+  // Максимальный номер песни для перемешивания: увеличьте это значение после добавления песен.
+  shuffleMaxTrackNumber: 2,
   volume: 0.5,
   maxTilt: 8,
 };
