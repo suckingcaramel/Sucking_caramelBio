@@ -52,7 +52,7 @@ window.PROFILE_CONFIG = {
   ],
   tracksFile: './tracks.txt',
   // Максимальный номер песни для перемешивания: увеличьте это значение после добавления песен.
-  shuffleMaxTrackNumber: 16,
+  shuffleMaxTrackNumber: 15,
   volume: 0.5,
   maxTilt: 8,
 };
