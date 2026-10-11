@@ -84,15 +84,25 @@ let tracks = [];
 let trackIndex = 0;
 let seeking = false;
 let shuffleEnabled = false;
+const failedTracks = new Set();
+let trackLoadId = 0;
+let playAttemptId = 0;
 function nextTrackIndex(direction = 1) {
-  if (!shuffleEnabled) return (trackIndex + direction + tracks.length) % tracks.length;
-  const maxNumber = Math.max(1, Math.floor(Number(config.shuffleMaxTrackNumber) || 2));
+  if (!tracks.length) return -1;
+  if (!shuffleEnabled) {
+    for (let offset = 1; offset <= tracks.length; offset++) {
+      const index = (trackIndex + direction * offset + tracks.length) % tracks.length;
+      if (!failedTracks.has(index)) return index;
+    }
+    return -1;
+  }
+  const maxNumber = Math.max(1, Math.floor(Number(config.shuffleMaxTrackNumber) || Math.max(...tracks.map(track => track.id))));
   const candidates = tracks
     .map((track, index) => ({ id: track.id, index }))
-    .filter(track => track.id <= maxNumber && track.index !== trackIndex);
+    .filter(track => track.id <= maxNumber && track.index !== trackIndex && !failedTracks.has(track.index));
   return candidates.length
     ? candidates[Math.floor(Math.random() * candidates.length)].index
-    : trackIndex;
+    : (!failedTracks.has(trackIndex) && tracks[trackIndex].id <= maxNumber ? trackIndex : -1);
 }
 const fallbackTrack = {
   url: './assets/music/The_perfect_pair_Beabadoobee.mp3',
@@ -138,14 +148,51 @@ const updateProgress = () => {
   seek.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} из ${formatTime(audio.duration)}`);
 };
 async function playAudio() {
+  const loadId = trackLoadId;
+  const attemptId = ++playAttemptId;
+  const index = trackIndex;
   playbackRequested = true;
   status('');
   try { await audio.play(); }
-  catch { status('Не удалось воспроизвести музыку. Проверьте URL трека.'); }
+  catch (error) {
+    if (loadId !== trackLoadId || attemptId !== playAttemptId || error.name === 'AbortError') return;
+    if (error.name === 'NotAllowedError') {
+      playbackRequested = false;
+      status('Нажмите кнопку воспроизведения, чтобы включить музыку.');
+    } else if (error.name === 'NotSupportedError' || (audio.error && audio.error.code !== 1)) {
+      skipFailedTrack(index, loadId);
+    } else {
+      playbackRequested = false;
+      status('Не удалось воспроизвести музыку. Попробуйте ещё раз.');
+    }
+  }
+}
+function stopUnavailablePlayback() {
+  trackLoadId++;
+  playAttemptId++;
+  playbackRequested = false;
+  seeking = false;
+  audio.pause();
+  audio.removeAttribute('src');
+  audio.load();
+  $('play').disabled = true;
+  updatePlay();
+  updateProgress();
+  status('Нет доступных треков. Обновите страницу, чтобы попробовать снова.');
+}
+function skipFailedTrack(index = trackIndex, loadId = trackLoadId) {
+  if (loadId !== trackLoadId || failedTracks.has(index)) return;
+  failedTracks.add(index);
+  const autoplay = playbackRequested;
+  loadTrack(nextTrackIndex(), autoplay);
 }
 function loadTrack(index, autoplay = false) {
   if (!tracks.length) { $('play').disabled = true; status('Трек не указан.'); return; }
+  if (index < 0) { stopUnavailablePlayback(); return; }
+  trackLoadId++;
+  playAttemptId++;
   trackIndex = (index + tracks.length) % tracks.length;
+  $('play').disabled = false;
   seeking = false;
   playbackRequested = autoplay;
   audio.pause();
@@ -174,7 +221,7 @@ function loadTrack(index, autoplay = false) {
 }
 $('play').addEventListener('click', () => {
   if (audio.paused) playAudio();
-  else { playbackRequested = false; audio.pause(); }
+  else { playbackRequested = false; playAttemptId++; audio.pause(); }
 });
 $('mute').addEventListener('click', () => {
   if (audio.muted || audio.volume === 0) {
@@ -188,10 +235,10 @@ $('mute').addEventListener('click', () => {
   updateVolume();
 });
 $('previous').addEventListener('click', () => {
-  if (!shuffleEnabled && (audio.currentTime > 3 || tracks.length === 1)) { audio.currentTime = 0; updateProgress(); }
-  else loadTrack(nextTrackIndex(-1), !audio.paused);
+  if (!shuffleEnabled && !failedTracks.has(trackIndex) && (audio.currentTime > 3 || tracks.length === 1)) { audio.currentTime = 0; updateProgress(); }
+  else loadTrack(nextTrackIndex(-1), playbackRequested || !audio.paused);
 });
-$('next').addEventListener('click', () => loadTrack(nextTrackIndex(), !audio.paused));
+$('next').addEventListener('click', () => loadTrack(nextTrackIndex(), playbackRequested || !audio.paused));
 $('shuffle').addEventListener('click', () => {
   shuffleEnabled = !shuffleEnabled;
   $('shuffle').setAttribute('aria-pressed', String(shuffleEnabled));
@@ -212,13 +259,8 @@ for (const event of ['timeupdate', 'durationchange', 'loadedmetadata', 'emptied'
 for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, updatePlay);
 audio.addEventListener('playing', () => status(''));
 audio.addEventListener('error', () => {
-  if (audio.src === safeUrl(fallbackTrack.url)) {
-    playbackRequested = false;
-    status('Не удалось загрузить запасной локальный трек.');
-    return;
-  }
-  tracks[trackIndex] = { ...fallbackTrack, id: tracks[trackIndex]?.id };
-  loadTrack(trackIndex, playbackRequested);
+  if (!audio.error || audio.error.code === 1 || !tracks.length) return;
+  skipFailedTrack();
 });
 audio.addEventListener('ended', () => loadTrack(nextTrackIndex(), true));
 function parseTracks(text) {
@@ -240,6 +282,7 @@ function parseTracks(text) {
 }
 
 async function loadTracks() {
+  failedTracks.clear();
   const buttons = [$('play'), $('previous'), $('next'), $('shuffle')];
   buttons.forEach(button => { button.disabled = true; });
   $('track-title').textContent = 'Загрузка музыки…';
