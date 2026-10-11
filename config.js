@@ -5,6 +5,7 @@ window.PROFILE_CONFIG = {
   background: {
     type: 'video',
     url: 'https://media.wallpaperengine.space/fallback/live-capture/v1/dark-night-street-lamps.mp4',
+    mobileUrl: 'https://motionbgs.com/media/9268/minecraft-snowy-campfire.304x540.mp4',
   },
   avatar: './assets/icons/avatar.png',
   discordAvatar: {
@@ -51,7 +52,7 @@ window.PROFILE_CONFIG = {
   ],
   tracksFile: './tracks.txt',
   // Максимальный номер песни для перемешивания: увеличьте это значение после добавления песен.
-  shuffleMaxTrackNumber: 2,
+  shuffleMaxTrackNumber: 16,
   volume: 0.5,
   maxTilt: 8,
 };
