@@ -1,9 +1,8 @@
 1|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/The_perfect_pair_Beabadoobee.mp3|The perfect pair - beabadoobee
-2|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bored-Grunge-altered.mp3|Bored - Billie Eilish
 2|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/KARMA-Alien-Stage.mp3|KARMA - Alien Stage
-3|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/How%20deep%20is%20your%20love%20-%20Mitski.mp3|How deep is your love - Mitski
-4|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Toxic%20city%20-%20System%20of%20a%20down.mp3|Toxic city - System of a down
-5|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bored-Grunge-altered.mp3|Bored - Billie Eilish
+3|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bored-Grunge-altered.mp3|Bored - Billie Eilish
+4|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/How%20deep%20is%20your%20love%20-%20Mitski.mp3|How deep is your love - Mitski
+5|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Toxic%20city%20-%20System%20of%20a%20down.mp3|Toxic city - System of a down
 6|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Obsessica-Malcolm-Todd.mp3|Obsessica - Malcolm Todd
 7|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/He's%20My%20Man%20-%20Luvcat.mp3|He's My Man - Luvcat
 8|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Black%20Beauty%20-%20Lana%20Del%20Rey.mp3|Black Beauty - Lana Del Rey
@@ -11,6 +10,6 @@
 10|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bathroom%20Bitch%20-%20HOLYCHILD.mp3|Bathroom Bitch - HOLYCHILD
 11|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Lonely%20Day%20-%20System%20of%20a%20down.mp3|Lonely Day - System of a down
 12|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Bitches%20%20%20Mindless%20Self%20Indulgence.mp3|Bitches - Mindless Self Indulgence
-14|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Never%20Wanted%20To%20Dance%20-%20Mindless%20Self%20Indulgence%20.mp3|Never Wanted To Dance - Mindless Self Indulgence
-15|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/if%20u%20think%20i'm%20pretty%20-%20Artemas.mp3|if u think i'm pretty - Artemas
-16|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Put-Me-in-a-Movie-Lana-Del-Rey.mp3|Put Me in a Movie - Lana Del Rey
+13|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Never%20Wanted%20To%20Dance%20-%20Mindless%20Self%20Indulgence%20.mp3|Never Wanted To Dance - Mindless Self Indulgence
+14|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/if%20u%20think%20i'm%20pretty%20-%20Artemas.mp3|if u think i'm pretty - Artemas
+15|https://ioxogtocsmeyzeouohvl.supabase.co/storage/v1/object/public/music/Put-Me-in-a-Movie-Lana-Del-Rey.mp3|Put Me in a Movie - Lana Del Rey
