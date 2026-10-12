@@ -16,7 +16,7 @@ window.PROFILE_CONFIG = {
   links: [
     {
       name: 'Telegram',
-      url: 'https://t.me/SuckingCaramel',
+      url: 'https://t.me/Sucking_caramel',
       icon: 'https://cdn.simpleicons.org/telegram/fff5dc',
     },
     {
